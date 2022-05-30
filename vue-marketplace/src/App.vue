@@ -7,10 +7,12 @@
 
 <script>
 import Navbar from './components/reusable/Navbar.vue';
-// import Login from "./components/login/Login.vue";
 
 export default {
     name: "App",
-    components: { Navbar }
+    components: { Navbar },
+    created(){
+      localStorage.logged = 0;
+    }
 };
 </script>
