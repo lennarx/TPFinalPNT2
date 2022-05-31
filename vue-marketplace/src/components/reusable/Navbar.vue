@@ -1,10 +1,9 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: dodgerblue;">
     <div class="container-fluid">
       <router-link class="navbar-brand" to="/home">Petshop </router-link>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <!-- <li class="nav-item" v-if="this.checkLogin()"> -->
           <li class="nav-item" >
             <router-link class="nav-link active" to="/marketplace">Marketplace</router-link>
           </li>
@@ -18,7 +17,7 @@
 export default {
   name: "Navbar",
   data(){
-    logged: null
+    return {logged: 0}
   },
   methods: {
     checkLogin(){
