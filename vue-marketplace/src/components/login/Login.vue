@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center" style="margin-top: 12%; margin-left: 15%; padding-block: 2%; margin-right: 10%;">
+        <div class="row justify-content-center" style=" margin-left: 15%; margin-right: 10%;">
             <div class="col-6">
                 <form v-on:submit.prevent="onSubmit" style="width: 25%%">
                     <div style="display: block; margin-top: 10rem">

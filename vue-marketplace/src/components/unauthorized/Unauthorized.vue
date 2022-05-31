@@ -1,5 +1,5 @@
 <template>
-  <div style="align-items: center;margin: 25rem 60rem 30rem 60rem;">
+  <div style="align-items: center;margin: 15% 30% 30% 40%;">
     <p>Usuario o contraseña incorrecta</p>
     <button class="btn btn-info mt-4 text-white" v-on:click="this.redirectToLogin()">LOGUEATE</button>
   </div>
