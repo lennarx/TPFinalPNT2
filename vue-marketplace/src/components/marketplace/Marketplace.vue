@@ -73,19 +73,7 @@
         >
           <ProductView :producto="producto" />
         </div>
-      </div>
-      <div class="row">
-        <div class="col-6">
-          <button class="btn btn-info mt-4 text-white">
-            Previous
-          </button>
-        </div>
-        <div class="col-6">
-          <button class="btn btn-info mt-4 text-white" >
-            Next
-          </button>
-        </div>
-      </div>
+      </div>      
     </div>
   </div>
 </template>

@@ -5,7 +5,7 @@ import Marketplace from "../components/marketplace/Marketplace.vue"
 import Unauthorized from "../components/unauthorized/Unauthorized.vue"
 
 const logged = () => {
-    if (localStorage.logged === "0" || !localStorage.logged) {
+    if (sessionStorage.logged === "0" || !sessionStorage.logged) {
         return { path: '/unauthorized', name: 'Unauthorized', component: Unauthorized }
     }
 }
