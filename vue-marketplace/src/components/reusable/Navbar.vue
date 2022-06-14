@@ -7,6 +7,10 @@
           <li class="nav-item" >
             <router-link class="nav-link active" to="/marketplace">Marketplace</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link active" to="/cart">Carrito</router-link>
+            <!-- <Cart/> -->
+          </li>
         </ul>
       </div>
     </div>
@@ -14,8 +18,12 @@
 </template>
 
 <script>
+import Cart from '../carrito/Cart.vue'
 export default {
   name: "Navbar",
+  components: {
+    Cart
+  },
   data(){
     return {logged: 0}
   },

@@ -1,9 +1,10 @@
 <template>
-  <div class="card" style="width: 18rem; height: 45rem;">
+  <div class="card">
+    <div class="productImg">
     <img :src="producto.imagen" class="card-img-top" alt="..." />
+    </div>
     <div class="card-body">
       <h5 class="card-title">{{ productoData.nombre }}</h5>
-      <p class="card-text">Descripción: {{ productoData.descripcion }}</p>
       <p class="card-text">Precio: {{ productoData.precio }}</p>
       <p class="card-text">Cantidad: {{ productoData.cantidad }}</p>
       <button v-on:click="handleItem">Agregar al carrito</button>
@@ -14,7 +15,7 @@
 <script>
 
 export default {
-  name: "Producto",
+  name: "CartProduct",
   data(){
     return{
       productoData:{}
@@ -24,16 +25,6 @@ export default {
     producto: Object,
   },
   methods:{
-    handleItem(){
-      this.handleQtyChange();
-      this.$store.commit('increment',this.producto)
-      // console.log('asd', this.producto)
-      console.log(this.$store.getters.itemsCart)
-    },
-    handleQtyChange(){
-      //TO-DO: mandar put con el id del producto y qty=-1
-      return this.productoData.cantidad-=1
-    },
     loadInfo(){
       this.productoData = this.producto
     }
@@ -43,3 +34,19 @@ export default {
   },
 };
 </script>
+<style scoped>
+.card{
+    width: 20rem; 
+    height: 5rem; 
+    display:flex;
+    flex-direction:row;
+}
+.productImg{
+    width:30%;
+    height:100%;
+}
+.card-body{
+    width: 70%;
+    height:100%;
+}
+</style>
