@@ -64,6 +64,20 @@
           </form>
         </div>
       </div>
+      <br/>
+      <div class="row">
+
+      <div class="col-md-2 float-end">
+        <input
+          class="btn btn-primary "
+          type="button"
+          value="Nuevo Producto"
+          @click="createProductRedirect()"
+        />
+      </div>
+
+      <br/>
+
       <!-- por id nombre especie y estado -->
       <div class="row justify-content-center">
         <div
@@ -73,7 +87,10 @@
         >
           <ProductView :producto="producto" />
         </div>
-      </div>      
+      </div> 
+
+      </div>
+  
     </div>
   </div>
 </template>
@@ -81,6 +98,8 @@
 <script>
 import axios from "axios";
 import ProductView from "../product/ProductView.vue";
+import router from '@/router'
+
 export default {
   name: "Marketplace",
   data() {
@@ -108,9 +127,16 @@ export default {
       this.personajes = [response.data];
       console.log(this.personajes);
     },
+    createProductRedirect(){
+      router.push({path:'/createproduct', replace: true})
+    },
+    EditProductRedirect(){
+      router.push({path:'/editproduct', replace: true})
+    },
+
     onSubmit() {
       if (this.form.id) {
-        this.loadCharacter(
+        this.loadProducts(
           "https://625df5ed6c48e8761ba34b95.mockapi.io/api/v1/productos/" + this.form.id
         );
       } else {
