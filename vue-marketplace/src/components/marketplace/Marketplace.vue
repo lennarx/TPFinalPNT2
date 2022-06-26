@@ -65,6 +65,25 @@
         </div>
       </div>
       <br/>
+      <label>Seleccione una categoria: </label>
+      <select v-model="selected" style="margin-right: 15px">
+        <option disabled value="">Seleccione un elemento</option>        
+        <option value="Alimentos">Alimentos</option>
+        <option value="Juguetes">Juguetes</option>
+        <option value="Exoticos">Exoticos</option>
+        <option value="Higiene">Higiene</option>
+        <b-form-select v-model="select" :options="value"></b-form-select>
+      </select>      
+
+      <label>Ordenar por Precio: </label>
+      <select v-model="selected" v-on:change="ordenamiento">
+        <option disabled value="">Seleccione un elemento</option>        
+        <option value="Menor">Ordenar de Mayor a Menor</option>
+        <option value="Mayor">Ordenar de Menor a Mayor</option>
+        <b-form-select v-model="select" :options="value"></b-form-select>
+      </select>
+      <br/>
+      <br/>
       <div class="row">
 
       <div class="col-md-2 float-end">
@@ -132,6 +151,17 @@ export default {
     },
     EditProductRedirect(){
       router.push({path:'/editproduct', replace: true})
+    },
+
+  ordenamiento(e){
+      if (e.target.value == "Mayor"){
+        this.productos = this.productos.sort((a,b)=> parseInt(b.precio) - parseInt(a.precio))
+        console.log(this.productos);
+      }
+      else if(e.target.value == "Menor"){
+        this.productos = this.productos.sort((a,b)=> parseInt(a.precio) - parseInt(b.precio))
+        console.log(this.productos);
+      }
     },
 
     onSubmit() {
