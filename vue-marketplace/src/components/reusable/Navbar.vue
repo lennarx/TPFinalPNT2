@@ -7,7 +7,9 @@
           <li class="nav-item" >
             <router-link class="nav-link active" to="/marketplace">Marketplace</router-link>
           </li>
-          
+          <li class="nav-item">
+            <router-link class="nav-link active" to="/cart">Carrito</router-link>
+          </li>
         </ul>
       </div>
     </div>

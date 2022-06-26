@@ -12,6 +12,9 @@
        <button class="btn btn-info mt-4 text-white" @click="DeleteProduct()">
             Eliminar Producto
       </button>
+      <button class="btn btn-info mt-4 text-white" v-on:click="handleItem">
+        Agregar al carrito
+      </button>
         
     </div>
   </div>
@@ -38,6 +41,10 @@ export default {
            router.push({path:'/marketplace', replace: true})
         }
       }, 
+      handleItem(){
+      this.$store.commit('increment',this.producto)
+      console.log(this.$store.getters.itemsCart)
+    },
   }
 };
 </script>
