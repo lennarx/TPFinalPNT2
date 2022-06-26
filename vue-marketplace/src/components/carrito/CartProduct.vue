@@ -4,16 +4,17 @@
     <img :src="producto.imagen" class="card-img-top" alt="..." />
     </div>
     <div class="card-body">
-      <h5 class="card-title">{{ productoData.nombre }}</h5>
-      <p class="card-text">Precio: {{ productoData.precio }}</p>
-      <p class="card-text">Cantidad: {{ productoData.cantidad }}</p>
-      <button v-on:click="handleItem">Agregar al carrito</button>
+    <div class="card-body-text">
+      <div style="width:70%"><h5 class="card-title" >{{ productoData.nombre }}</h5></div>
+      <div style="width:30%;text-align:center"><p class="card-text" ><b> ${{ productoData.precio }}</b></p></div>
+      
+      
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "CartProduct",
   data(){
@@ -36,14 +37,20 @@ export default {
 </script>
 <style scoped>
 .card{
-    width: 20rem; 
-    height: 5rem; 
+    width: 100%; 
+    height: 12rem; 
     display:flex;
     flex-direction:row;
+    color:black;
+}
+.card-body-text{
+  display: flex;
+
 }
 .productImg{
-    width:30%;
-    height:100%;
+  object-fit: cover;
+  width:30%;
+  height:100%;
 }
 .card-body{
     width: 70%;

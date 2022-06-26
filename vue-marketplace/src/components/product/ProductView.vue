@@ -25,14 +25,9 @@ export default {
   },
   methods:{
     handleItem(){
-      this.handleQtyChange();
       this.$store.commit('increment',this.producto)
       // console.log('asd', this.producto)
       console.log(this.$store.getters.itemsCart)
-    },
-    handleQtyChange(){
-      //TO-DO: mandar put con el id del producto y qty=-1
-      return this.productoData.cantidad-=1
     },
     loadInfo(){
       this.productoData = this.producto

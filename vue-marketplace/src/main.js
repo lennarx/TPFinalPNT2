@@ -15,6 +15,9 @@ const store = createStore({
     increment(state, item) {
       state.itemsOnCart.push(item);
     },
+    deleteAll(state) {
+      state.itemsOnCart = [];
+    },
   },
 });
 

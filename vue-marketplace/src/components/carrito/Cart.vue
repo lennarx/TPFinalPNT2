@@ -1,24 +1,33 @@
 <template>
-  <div class="card" style="width: 18rem; height: 45rem;">
-      <p>Carrito</p>
-      <button v-on:click="handleItem">asd</button>
-       <div class="row justify-content-center" style="display:flex;flex-direction:column;position: relative;z-index: 50;">
+
+<div style="width: 100%;display: flex;justify-content: center;">
+  <div class="card" style="width: 35%; height:100%">
+      <h1 style="text-align:center">Carrito</h1>
         <div
           :key="producto.id"
-          v-for="producto in productos"
-          class="col-4 text-dark mt-4"
-          
-        >
+          v-for="producto in productos">
           <CartProduct :producto="producto"/>
         </div>
+        <div>
+          <div style="display:flex; width:100%;justify-content: space-between;margin-top:15px">
+          <p><b>Total: ${{total}} </b></p>
+          <div style="display:flex;flex-direction:row;">
+            <button type="button" class="btn btn-danger" style="color:white;" v-on:click="borrarCarrito"> Vaciar carrito </button>
+            <ModalConfirmar :total="total" :cantProductos="cantProductos"/>
+
+          </div>
+          </div>
         </div>
+
   </div>
+</div>
 </template>
 
 <script>
 
 import CartProduct from './CartProduct.vue'
-import mapGetters from 'vuex'
+import ModalConfirmar from './ModalConfirmar.vue'
+
 export default {
   name: "Cart",
   data(){
@@ -27,11 +36,14 @@ export default {
       //TO-DO: No bajar qty al agregar al carrito, cuando se efectua la compra, mandar put a mock api seleccionando un array
       //TO-DO: Agregar modal que diga "Gracias por tu compra"
       //TO-DO: Agregar boton de cancelar: borra el carrito
-      productos:this.$store.getters.itemsCart
+      productos:this.$store.getters.itemsCart,
+      cantProductos:0,
+      total: 0
     }
   },
   components: {
-    CartProduct
+    CartProduct,
+    ModalConfirmar
   },
   computed: {
     products: function(){
@@ -39,13 +51,26 @@ export default {
     }
   },
   methods: {
-    handleItem(){
-      console.log(this.productos)
-    }
+    calcularData(){
+      console.log("PRODUCTOS", this.productos)
+      this.total=  this.productos.reduce(
+        (prevValue,actualValue) => prevValue + parseInt(actualValue.precio),0
+      )
+      this.cantProductos = this.productos.length
+    },
+    borrarCarrito(){
+      this.$store.commit('deleteAll')
+      this.productos = []
+      this.calcularData()
+    },
   },
   created(){
-
-    console.log(this.productos)
+    this.productos.length > 0 && this.calcularData()
   }
 };
 </script>
+<style scoped>
+*{
+  color:black
+}
+</style>
