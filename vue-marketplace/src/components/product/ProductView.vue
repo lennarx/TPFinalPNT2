@@ -10,22 +10,34 @@
         </div>
       </div>
     </div>
+  
+  <div class="card h-100" style="width: 100%; height: 45rem;">
     <img :src="producto.imagen" style="height:200px; object-fit: cover" class="card-img-top" alt="..." />
     <div class="card-body">
-      <h5 class="card-title">{{ producto.nombre }}</h5>
-      <p class="card-text">Descripción: {{ producto.descripcion }}</p>
-      <p class="card-text">Precio: {{ producto.precio }}</p>
-      <p class="card-text">Cantidad: {{ producto.cantidad }}</p>
-      <button class="btn btn-info mt-4 text-white" @click="EditProductRedirect()">
-            Editar Producto
+        <h1 class="card-text">${{ producto.precio }}</h1>
+
+      <div style="height:18rem">
+        <h5 class="card-title" style="height:2.5rem">{{ producto.nombre }}</h5>
+        <p class="card-text" style="height:12rem">Descripción: {{ producto.descripcion }}</p>
+        <p class="card-text" style="font-size:1.5rem"><i class="bi bi-box2-fill"></i> {{ producto.cantidad }} unidades</p>
+      </div>
+      <div style="display:flex;justify-content: space-around">
+
+      <button class="btn btn-primary mt-4" @click="EditProductRedirect()">
+            Editar <i class="bi bi-pencil-square"></i>
       </button>
-       <button class="btn btn-info mt-4 text-white" @click="DeleteProduct()">
-            Eliminar Producto
+       <button class="btn btn-danger mt-4" @click="DeleteProduct()">
+            Eliminar <i class="bi bi-trash"></i>
       </button>
+      <button class="btn btn-success mt-4" v-on:click="handleItem">
+            Añadir <i class="bi bi-cart-plus"></i>
+      </button>
+      </div>
         
     </div>
 
     
+  </div>
   </div>
 </template>
 
@@ -56,6 +68,10 @@ export default {
       toMarketplace(){
         router.go()
       }
-  }
-};
+      }, 
+      handleItem(){
+      this.$store.commit('increment',this.producto)
+      console.log(this.$store.getters.itemsCart)
+    },
+  };
 </script>

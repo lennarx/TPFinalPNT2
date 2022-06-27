@@ -5,9 +5,11 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item" >
-            <router-link class="nav-link active" to="/marketplace">Marketplace</router-link>
+            <router-link class="nav-link active" to="/marketplace"><i class="bi bi-shop"></i> Marketplace</router-link>
           </li>
-          
+          <li class="nav-item">
+            <router-link class="nav-link active" to="/cart"> <i class="bi bi-cart"></i> Carrito</router-link>
+          </li>
         </ul>
       </div>
     </div>
