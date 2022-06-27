@@ -22,6 +22,25 @@
         </div>
       </div>
       <br/>
+      <label>Seleccione una categoria: </label>
+      <select v-model="selected" style="margin-right: 15px" v-on:change="filtrarPorCategoria">
+        <option disabled value="">Seleccione un elemento</option>        
+        <option value="Alimentos">Alimentos</option>
+        <option value="Juguetes">Juguetes</option>
+        <option value="Exoticos">Exoticos</option>
+        <option value="Higiene">Higiene</option>
+        <b-form-select v-model="select" :options="value"></b-form-select>
+      </select>      
+
+      <label>Ordenar por Precio: </label>
+      <select v-model="selected" v-on:change="ordenamiento">
+        <option disabled value="">Seleccione un elemento</option>        
+        <option value="Menor">Ordenar de Mayor a Menor</option>
+        <option value="Mayor">Ordenar de Menor a Mayor</option>
+        <b-form-select v-model="select" :options="value"></b-form-select>
+      </select>
+      <br/>
+      <br/>
       <div class="row">
 
       <div class="col-md-2 float-end">
@@ -61,6 +80,7 @@ export default {
   data() {
     return {
       productos: [],
+      productosOriginal: [],
       info: {},
       form: {
         id: null,
@@ -77,6 +97,7 @@ export default {
     async loadProducts(url = "https://625df5ed6c48e8761ba34b95.mockapi.io/api/v1/productos") {
       const response = await axios.get(url);
       this.productos =response.data;
+      this.productosOriginal =response.data;
     },
     async loadProduct(url) {
       const response = await axios.get(url);
@@ -91,23 +112,24 @@ export default {
     },
     
 
+  ordenamiento(e){
+      if (e.target.value == "Mayor"){
+        this.productos = this.productos.sort((a,b)=> parseInt(b.precio) - parseInt(a.precio))
+        console.log(this.productos);
+      }
+      else if(e.target.value == "Menor"){
+        this.productos = this.productos.sort((a,b)=> parseInt(a.precio) - parseInt(b.precio))
+        console.log(this.productos);
+      }
+    },
+    filtrarPorCategoria(e){
+      this.productos= this.productosOriginal.filter((producto)=> producto.categoria === e.target.value)
+    },
     onSubmit() {
       if (this.form.id) {
-        this.loadProducts(
-          "https://625df5ed6c48e8761ba34b95.mockapi.io/api/v1/productos/" + this.form.id
-        );
-      } else {
-        // let url = "https://rickandmortyapi.com/api/character?";
-        // this.form.name ? (url = url + "name=" + this.form.name + "&") : null;
-        // this.form.status
-        //   ? (url = url + "status=" + this.form.status + "&")
-        //   : null;
-        // this.form.species
-        //   ? (url = url + "species=" + this.form.species + "&")
-        //   : null;
-        // console.log(url);
-        // this.loadCharacters(url);
-      
+        console.log(this.form.id)
+        console.log(this.productos)
+        this.productos = this.productosOriginal.filter((e)=> e.id == this.form.id)
       }
     },
   },
