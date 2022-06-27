@@ -10,50 +10,6 @@
               >
               <input type="number" class="form-control" v-model="form.id" />
             </div>
-            <!-- <div class="mb-3">
-              <label for="name" class="form-label"
-                >Nombre: <span class="text-danger">*</span></label
-              >
-              <input
-                type="text"
-                class="form-control"
-                v-model="form.name"
-                :disabled="form.id"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="status" class="form-label"
-                >Estado: <span class="text-danger">*</span></label
-              >
-              <select
-                class="form-select"
-                aria-label="Estado"
-                v-model="form.status"
-                :disabled="form.id"
-              >
-                <option value="Alive">Alive</option>
-                <option value="Dead">Dead</option>
-                <option value="unknown">Unknown</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <label for="species" class="form-label"
-                >Especie: <span class="text-danger">*</span></label
-              >
-              <select
-                class="form-select"
-                aria-label="Especie"
-                v-model="form.species"
-                :disabled="form.id"
-              >
-                <option value="Human">Human</option>
-                <option value="Alien">Alien</option>
-                <option value="Mythological Creature">
-                  Mythological Creature
-                </option>
-                <option value="Robot">Robot</option>
-              </select>
-            </div> -->
             <div class="d-grid gap-2">
               <input
                 class="btn btn-info text-white"
@@ -170,9 +126,9 @@ export default {
     },
     onSubmit() {
       if (this.form.id) {
-        this.loadProducts(
-          "https://625df5ed6c48e8761ba34b95.mockapi.io/api/v1/productos/" + this.form.id
-        );
+        console.log(this.form.id)
+        console.log(this.productos)
+        this.productos = this.productosOriginal.filter((e)=> e.id == this.form.id)
       }
     },
   },
