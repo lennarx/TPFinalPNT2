@@ -66,7 +66,7 @@
       </div>
       <br/>
       <label>Seleccione una categoria: </label>
-      <select v-model="selected" style="margin-right: 15px">
+      <select v-model="selected" style="margin-right: 15px" v-on:change="filtrarPorCategoria">
         <option disabled value="">Seleccione un elemento</option>        
         <option value="Alimentos">Alimentos</option>
         <option value="Juguetes">Juguetes</option>
@@ -124,6 +124,7 @@ export default {
   data() {
     return {
       productos: [],
+      productosOriginal: [],
       info: {},
       form: {
         id: null,
@@ -140,6 +141,7 @@ export default {
     async loadProducts(url = "https://625df5ed6c48e8761ba34b95.mockapi.io/api/v1/productos") {
       const response = await axios.get(url);
       this.productos =response.data;
+      this.productosOriginal =response.data;
     },
     async loadProduct(url) {
       const response = await axios.get(url);
@@ -163,24 +165,14 @@ export default {
         console.log(this.productos);
       }
     },
-
+    filtrarPorCategoria(e){
+      this.productos= this.productosOriginal.filter((producto)=> producto.categoria === e.target.value)
+    },
     onSubmit() {
       if (this.form.id) {
         this.loadProducts(
           "https://625df5ed6c48e8761ba34b95.mockapi.io/api/v1/productos/" + this.form.id
         );
-      } else {
-        // let url = "https://rickandmortyapi.com/api/character?";
-        // this.form.name ? (url = url + "name=" + this.form.name + "&") : null;
-        // this.form.status
-        //   ? (url = url + "status=" + this.form.status + "&")
-        //   : null;
-        // this.form.species
-        //   ? (url = url + "species=" + this.form.species + "&")
-        //   : null;
-        // console.log(url);
-        // this.loadCharacters(url);
-      
       }
     },
   },
