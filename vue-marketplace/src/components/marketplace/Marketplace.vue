@@ -10,6 +10,7 @@
               >
               <input type="number" class="form-control" v-model="form.id" />
             </div>
+            
             <div class="d-grid gap-2">
               <input
                 class="btn btn-info text-white"
@@ -47,8 +48,7 @@
           class="btn btn-primary "
           type="button"
           value="Nuevo Producto"
-          @click="createProductRedirect()"
-        />
+          @click="createProductRedirect()"/>
       </div>
 
       <br/>
@@ -101,8 +101,8 @@ export default {
     },
     async loadProduct(url) {
       const response = await axios.get(url);
-      this.personajes = [response.data];
-      console.log(this.personajes);
+      this.productos = [response.data];
+      console.log(this.productos);
     },
     createProductRedirect(){
       router.push({path:'/createproduct', replace: true})
@@ -110,6 +110,7 @@ export default {
     EditProductRedirect(){
       router.push({path:'/editproduct', replace: true})
     },
+    
 
   ordenamiento(e){
       if (e.target.value == "Mayor"){
