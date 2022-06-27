@@ -114,12 +114,10 @@ export default {
 
   ordenamiento(e){
       if (e.target.value == "Mayor"){
-        this.productos = this.productos.sort((a,b)=> parseInt(b.precio) - parseInt(a.precio))
-        console.log(this.productos);
+        this.productos = this.productos.sort((a,b)=> parseInt(a.precio) - parseInt(b.precio))                
       }
       else if(e.target.value == "Menor"){
-        this.productos = this.productos.sort((a,b)=> parseInt(a.precio) - parseInt(b.precio))
-        console.log(this.productos);
+        this.productos = this.productos.sort((a,b)=> parseInt(b.precio) - parseInt(a.precio))        
       }
     },
     filtrarPorCategoria(e){
