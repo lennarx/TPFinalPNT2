@@ -6,6 +6,7 @@ import Unauthorized from "../components/unauthorized/Unauthorized.vue"
 import CreateProduct from "../components/product/CreateProduct.vue";
 import EditProduct from "../components/product/EditProduct.vue";
 
+
 const logged = () => {
     if (sessionStorage.logged === "0" || !sessionStorage.logged) {
         return { path: '/unauthorized', name: 'Unauthorized', component: Unauthorized }
@@ -44,7 +45,9 @@ const routes = [
         path: '/editproduct/:id',
         name: 'EditProduct',
         component: EditProduct
-    }
+    },
+    
+    
 
 ];
 
