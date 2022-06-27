@@ -1,4 +1,4 @@
-<!-- <template>
+ <template>
   <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: dodgerblue;">
     <div class="container-fluid">
       <router-link class="navbar-brand text-uppercase" to="/home">Happy Pets</router-link>
@@ -29,9 +29,9 @@ export default {
     }
   }
 };
-</script> -->
+</script>
 
-<nav class="navbar navbar-expand-lg bg-light">
+<!-- <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,4 +66,4 @@ export default {
       </form>
     </div>
   </div>
-</nav>
+</nav> --> 
