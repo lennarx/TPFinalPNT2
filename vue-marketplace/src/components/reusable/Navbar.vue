@@ -1,11 +1,14 @@
 <!-- <template>
   <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: dodgerblue;">
     <div class="container-fluid">
-      <router-link class="navbar-brand" to="/home">Petshop </router-link>
+      <router-link class="navbar-brand text-uppercase" to="/home">Happy Pets</router-link>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item" >
-            <router-link class="nav-link active" to="/marketplace">Marketplace</router-link>
+            <router-link class="nav-link active" to="/marketplace"><i class="bi bi-shop"></i> Marketplace</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link active" to="/cart"> <i class="bi bi-cart"></i> Carrito</router-link>
           </li>
         </ul>
       </div>
