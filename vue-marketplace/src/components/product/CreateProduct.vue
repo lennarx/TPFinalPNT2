@@ -34,7 +34,7 @@
       </div>
     </div>
     <div aria-live="polite" aria-atomic="true" class="position-fixed top-50 start-50 translate-middle">
-      <div id="toastProduct" class="toast text-center bg-primary" role="alert" aria-live="assertive" aria-atomic="true" data-bs-animation="false" data-bs-autohide="false">
+      <div id="toastProduct" class="toast text-center bg-primary text-white" role="alert" aria-live="assertive" aria-atomic="true" data-bs-animation="false" data-bs-autohide="false">
         <div class="toast-body">
           El producto fue creado con éxito.
           <div class="d-grid gap-2 col-4 mx-auto mt-2">
