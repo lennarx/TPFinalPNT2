@@ -21,13 +21,10 @@
 </template>
 
 <script>
-import Navbar from '../reusable/Navbar.vue'
 
 export default {
     
-  name: 'Home',
-  components:{
-      Navbar
-  },
+  name: 'Home-item',
+ 
 }
 </script>
