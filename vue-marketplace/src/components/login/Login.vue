@@ -35,6 +35,7 @@ export default {
                 password : null
             },
             logged : 0,
+            role: "",
             usuarios : []
         }
     },
@@ -43,17 +44,13 @@ export default {
             const usuarioLogueado = this.usuarios.find(usuario => usuario.name === this.usuario.name && usuario.password === this.usuario.password)
             if(usuarioLogueado){
                 this.logged = 1
+                this.role = usuarioLogueado.role
                 sessionStorage.logged = this.logged
+                sessionStorage.role = this.role
                 router.push({path:'/home', replace: true})
-                // router.replace({path: '/home'})
             }            
         }
     },
-    // mounted(){
-    //     if (localStorage.logged) {
-    //        this.logged = localStorage.logged;
-    //     }
-    // },
     created(){       
        axios.get("https://625df5ed6c48e8761ba34b95.mockapi.io/api/v1/usuarios")
             .then(res => {

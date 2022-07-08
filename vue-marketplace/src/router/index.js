@@ -16,6 +16,17 @@ const logged = () => {
   }
 };
 
+const adminRole = () => {
+  if(sessionStorage.role !== "admin"){
+    alert('No tiene permisos para realizar la acción')
+    return{
+      path: "/marketplace",
+      name: "Marketplace",
+      component: Marketplace,
+    }
+  }
+}
+
 const routes = [
   {
     path: "/",
@@ -49,11 +60,13 @@ const routes = [
     path: "/createproduct",
     name: "CreateProduct",
     component: CreateProduct,
+    beforeEnter: [logged, adminRole]
   },
   {
     path: "/editproduct/:id",
     name: "EditProduct",
     component: EditProduct,
+    beforeEnter: [logged, adminRole]
   },
 ];
 

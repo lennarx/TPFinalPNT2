@@ -23,7 +23,7 @@
       </div>
       <br/>
       <label>Seleccione una categoria: </label>
-      <select v-model="selected" style="margin-right: 15px" v-on:change="filtrarPorCategoria">
+      <select visible="false" v-model="selected" style="margin-right: 15px" v-on:change="filtrarPorCategoria">
         <option disabled value="">Seleccione un elemento</option>        
         <option value="Alimentos">Alimentos</option>
         <option value="Juguetes">Juguetes</option>
@@ -33,7 +33,7 @@
       </select>      
 
       <label>Ordenar por Precio: </label>
-      <select v-model="selected" v-on:change="ordenamiento">
+      <select v-if="admin" v-model="selected" v-on:change="ordenamiento">
         <option disabled value="">Seleccione un elemento</option>        
         <option value="Menor">Ordenar de Mayor a Menor</option>
         <option value="Mayor">Ordenar de Menor a Mayor</option>
@@ -43,7 +43,7 @@
       <br/>
       <div class="row">
 
-      <div class="col-md-2 float-end">
+      <div class="col-md-2 float-end" v-if="admin">
         <input
           class="btn btn-primary "
           type="button"
@@ -88,6 +88,7 @@ export default {
         descripcion: null,
         cantidad: null,
       },
+      admin: sessionStorage.role === "admin" ? true : false
     };
   },
   components: {
