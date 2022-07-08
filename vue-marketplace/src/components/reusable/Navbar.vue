@@ -10,6 +10,9 @@
           <li class="nav-item">
             <router-link class="nav-link active" to="/cart"> <i class="bi bi-cart"></i> Carrito</router-link>
           </li>
+          <li stlye="margin-left: 50rem">
+            <router-link class="nav-link active" @click="logout()" stlye="margin-left: 50rem" to="/"> <i stlye="margin-left: 50rem" class="bi bi-box-arrow-in-right"></i> Logout</router-link>
+          </li>
         </ul>
       </div>
     </div>
@@ -26,6 +29,10 @@ export default {
     checkLogin(){
       this.logged = sessionStorage.logged
       return this.logged == 1
+    },
+    logout(){
+      sessionStorage.logged = 0
+      sessionStorage.role = undefined
     }
   }
 };

@@ -21,16 +21,17 @@
         <p class="card-text" style="font-size:1.5rem"><i class="bi bi-box2-fill"></i> {{ producto.cantidad }} unidades</p>
       </div>
       <div style="display:flex;justify-content: space-around">
-
-      <button class="btn btn-primary mt-4" @click="EditProductRedirect()">
-            Editar <i class="bi bi-pencil-square"></i>
-      </button>
-       <button class="btn btn-danger mt-4" @click="DeleteProduct()">
-            Eliminar <i class="bi bi-trash"></i>
-      </button>
-      <button class="btn btn-success mt-4" v-on:click="handleItem">
-            Añadir <i class="bi bi-cart-plus"></i>
-      </button>
+        <div  v-if="admin">
+          <button class="btn btn-primary mt-4" @click="EditProductRedirect()">
+                Editar <i class="bi bi-pencil-square"></i>
+          </button>
+          <button class="btn btn-danger mt-4" @click="DeleteProduct()">
+                Eliminar <i class="bi bi-trash"></i>
+          </button>
+        </div>
+        <button class="btn btn-success mt-4" v-on:click="handleItem">
+              Añadir <i class="bi bi-cart-plus"></i>
+        </button>        
       </div>
         
     </div>
@@ -48,6 +49,11 @@ export default {
   name: "Producto",
   props: {
     producto: Object,
+  },
+  data() {
+    return {      
+      admin: sessionStorage.role === "admin" ? true : false
+    };
   },
   methods: {
       EditProductRedirect(){
